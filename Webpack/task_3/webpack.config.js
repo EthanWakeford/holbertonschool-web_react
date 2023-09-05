@@ -1,4 +1,8 @@
 const path = require('path');
+// import 'html-webpack-plugin';
+// import 'clean-webpack-plugin';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   devServer: {
@@ -8,6 +12,7 @@ module.exports = {
     port: 8564,
     // contentBase: './public',
   },
+  plugins: [new HtmlWebpackPlugin(), new CleanWebpackPlugin()],
   entry: {
     header: './modules/header/header.js',
     body: './modules/body/body.js',
@@ -15,7 +20,12 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name]bundle.js',
+    filename: '[name].bundle.js',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   devtool: 'inline-source-map',
   mode: 'development',
