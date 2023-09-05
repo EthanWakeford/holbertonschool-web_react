@@ -1,6 +1,6 @@
-const $ = require("jquery");
-console.log("jquery", $);
+const $ = require('jquery');
+console.log('jquery', $);
 
-$("body").append("<p>Holberton Dashboard</p>");
-$("body").append("<p>Dashboard data for the students</p>");
-$("body").append("<p>Copyright - Holberton School</p>");
+$('body').append('<p>Holberton Dashboard</p>');
+$('body').append('<p>Dashboard data for the students</p>');
+$('body').append('<p>Copyright - Holberton School</p>');
