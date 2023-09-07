@@ -10,7 +10,7 @@
   width: 200px;
   background-size: cover;
   pointer-events: none;
-  background-image: url('./holbie.jpg');
+  background-image: url('../assets/holbie.jpg');
 }
 
 @media (prefers-reduced-motion: no-preference) {

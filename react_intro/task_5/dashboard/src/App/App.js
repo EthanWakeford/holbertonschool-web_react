@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { getFullYear, getFooterCopy } from './utils';
+import { getFullYear, getFooterCopy } from '../Utils/utils';
 
 function App() {
   return (
