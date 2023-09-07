@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.58f10492.css",
+    "main.js": "/static/js/main.0d5e891b.js",
+    "static/js/787.545aecf5.chunk.js": "/static/js/787.545aecf5.chunk.js",
+    "static/media/holbie.jpg": "/static/media/holbie.24bab5d633e36ca8d17e.jpg",
+    "index.html": "/index.html",
+    "main.58f10492.css.map": "/static/css/main.58f10492.css.map",
+    "main.0d5e891b.js.map": "/static/js/main.0d5e891b.js.map",
+    "787.545aecf5.chunk.js.map": "/static/js/787.545aecf5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58f10492.css",
+    "static/js/main.0d5e891b.js"
+  ]
+}
