@@ -1,5 +1,4 @@
 import './Notifications.css';
-import { getLatestNotification } from '../Utils/utils';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
@@ -45,10 +44,11 @@ export default function Notifications({ displayDrawer, listNotifications }) {
 }
 
 Notifications.propTypes = {
-  displayDrawer: PropTypes.string,
+  displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
+  listNotifications: [],
 };

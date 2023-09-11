@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
 import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList';
+import { getLatestNotification } from '../Utils/utils';
 
 function App({ isLoggedIn }) {
   const listCourses = [
@@ -12,9 +13,15 @@ function App({ isLoggedIn }) {
     { id: 3, name: 'React', credit: 40 },
   ];
 
+  const listNotifications = [
+    { id: 0, type: 'default', value: 'New course available' },
+    { id: 1, type: 'urgent', value: 'New resume available' },
+    { id: 2, type: 'urgent', html: { __html: getLatestNotification() } },
+  ];
+
   return (
     <>
-      <Notifications />
+      <Notifications listNotifications={listNotifications} />
       <Header />
       {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
       <Footer />
