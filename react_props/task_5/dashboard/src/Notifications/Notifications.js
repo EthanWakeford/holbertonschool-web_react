@@ -1,7 +1,7 @@
-import './Notifications.css';
 import NotificationItem from './NotificationItem';
-import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
+import PropTypes from 'prop-types';
+import './Notifications.css';
 
 export default function Notifications({ displayDrawer, listNotifications }) {
   return (

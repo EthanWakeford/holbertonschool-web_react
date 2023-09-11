@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
+import NotificationItemShape from './NotificationItemShape';
 
 export default function NotificationItem({ type, html, value }) {
   return (
@@ -12,9 +13,7 @@ export default function NotificationItem({ type, html, value }) {
 
 NotificationItem.propTypes = {
   type: PropTypes.string.isRequired,
-  html: PropTypes.shape({
-    __html: PropTypes.string,
-  }),
+  html: PropTypes.objectOf(NotificationItemShape),
   value: PropTypes.string,
 };
 
