@@ -14,9 +14,9 @@ function App({ isLoggedIn }) {
   ];
 
   const listNotifications = [
-    { id: 0, type: 'default', value: 'New course available' },
-    { id: 1, type: 'urgent', value: 'New resume available' },
-    { id: 2, type: 'urgent', html: { __html: getLatestNotification() } },
+    { id: 1, type: 'default', value: 'New course available' },
+    { id: 2, type: 'urgent', value: 'New resume available' },
+    { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
   ];
 
   return (
