@@ -5,8 +5,12 @@ export default function CourseListRow({
   textFirstCell,
   textSecondCell,
 }) {
+  const backgroudColor = isHeader
+    ? { backgroundColor: '#deb5b545' }
+    : { backgroundColor: '#f5f5f5ab' };
+
   return (
-    <tr>
+    <tr style={backgroudColor}>
       {isHeader ? (
         textSecondCell ? (
           <>
@@ -14,7 +18,7 @@ export default function CourseListRow({
             <th>{textSecondCell}</th>
           </>
         ) : (
-          <th colspan='2'>{textFirstCell}</th>
+          <th colSpan='2'>{textFirstCell}</th>
         )
       ) : (
         <>
