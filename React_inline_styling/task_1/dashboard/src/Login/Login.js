@@ -1,6 +1,10 @@
 import { StyleSheet, css } from 'aphrodite';
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  body: {
+    margin: 0,
+  },
+});
 
 export default function Login() {
   return (
