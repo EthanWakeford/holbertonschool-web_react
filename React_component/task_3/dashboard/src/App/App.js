@@ -4,6 +4,8 @@ import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
 import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../Utils/utils';
 import { Component } from 'react';
 
@@ -42,7 +44,23 @@ class App extends Component {
       <>
         <Notifications listNotifications={listNotifications} />
         <Header />
-        {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+        {isLoggedIn ? (
+          <BodySectionWithMarginBottom title={'Course list'}>
+            <CourseList listCourses={listCourses} />
+          </BodySectionWithMarginBottom>
+        ) : (
+          <BodySectionWithMarginBottom title={'Log in to continue'}>
+            <Login />
+          </BodySectionWithMarginBottom>
+        )}
+        <BodySection title={'News from the School'}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+            dicta in distinctio voluptatem tenetur doloremque dolorem corrupti,
+            illo sint nihil rem velit nesciunt porro nemo laudantium praesentium
+            natus eum? Fuga.
+          </p>
+        </BodySection>
         <Footer />
       </>
     );
