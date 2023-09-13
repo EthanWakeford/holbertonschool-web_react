@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
   appLink: {
     color: '#61dafb',
   },
+  body: {},
+  footer: {},
 });
 
 class App extends Component {
