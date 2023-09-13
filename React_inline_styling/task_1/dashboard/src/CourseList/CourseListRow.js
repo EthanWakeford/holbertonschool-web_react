@@ -5,12 +5,12 @@ export default function CourseListRow({
   textFirstCell,
   textSecondCell,
 }) {
-  const backgroundColor = isHeader
+  const backgroudColor = isHeader
     ? { backgroundColor: '#deb5b545' }
     : { backgroundColor: '#f5f5f5ab' };
 
   return (
-    <tr style={backgroundColor}>
+    <tr style={backgroudColor}>
       {isHeader ? (
         textSecondCell ? (
           <>
