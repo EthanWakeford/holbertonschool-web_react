@@ -1,5 +1,6 @@
-import './Footer.css';
+// import './Footer.css';
 import { getFullYear, getFooterCopy } from '../Utils/utils';
+// import {Style}
 
 export default function Footer() {
   return (

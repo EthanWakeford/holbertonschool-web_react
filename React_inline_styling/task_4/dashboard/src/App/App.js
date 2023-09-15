@@ -9,6 +9,7 @@ import BodySection from '../BodySection/BodySection';
 import { getLatestNotification } from '../Utils/utils';
 import { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import 'react';
 
 const styles = StyleSheet.create({
   app: {
@@ -39,6 +40,7 @@ class App extends Component {
 
   render() {
     const { isLoggedIn, logOut } = this.props;
+    console.log('HφΣ');
 
     const listCourses = [
       { id: 1, name: 'ES6', credit: 60 },

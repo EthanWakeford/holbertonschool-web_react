@@ -1,9 +1,9 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import App from './App';
 import 'jest';
-// import React from 'react';
-// import App from './App';
 
-test('test', () => {
-  expect(1).toBe(1);
+test('should render app', () => {
+  render(<App />);
+  expect(screen.getByRole('heading')).toHaveTextContent('Welcome, John Doe');
 });
-
-StyleSheetTestUtils.suppressStyleInjection();
