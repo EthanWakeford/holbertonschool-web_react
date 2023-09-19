@@ -53,6 +53,7 @@ class App extends Component {
 
   render() {
     const { isLoggedIn, logOut } = this.props;
+    const { displayDrawer } = this.state;
     // console.log('HφΣ');
 
     const listCourses = [
@@ -71,7 +72,7 @@ class App extends Component {
       <>
         <Notifications
           listNotifications={listNotifications}
-          displayDrawer={this.state.displayDrawer}
+          displayDrawer={displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer.bind(this)}
           handleHideDrawer={this.handleHideDrawer.bind(this)}
         />
