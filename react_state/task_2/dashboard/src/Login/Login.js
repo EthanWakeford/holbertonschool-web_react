@@ -1,5 +1,6 @@
 import { StyleSheet, css } from 'aphrodite';
 import { Component } from 'react';
+import AppContext from '../App/AppContext';
 
 const styles = StyleSheet.create({
   appBody: {
@@ -20,7 +21,6 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
       email: '',
       password: '',
       enableSubmit: false,
@@ -31,8 +31,9 @@ export default class Login extends Component {
   }
 
   handleLoginSubmit(e) {
+    console.log('logging in');
     e.preventDefault();
-    this.setState({ isLoggedIn: true });
+    this.props.logIn(this.state.email, this.state.password);
   }
 
   handleChangeEmail(e) {
@@ -43,6 +44,7 @@ export default class Login extends Component {
       this.setState({ enableSubmit: false });
     }
   }
+
   handleChangePassword(e) {
     this.setState({ password: e.target.value });
     if (this.state.email && e.target.value) {
@@ -53,11 +55,18 @@ export default class Login extends Component {
   }
 
   render() {
+    const { logIn } = this.props;
+    const { email, password } = this.state;
+
     return (
       <main className={css(styles.appBody)}>
         <p>Login to access the full dashboard</p>
         <form
           name='login'
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   logIn(email, password);
+          // }}
           onSubmit={this.handleLoginSubmit}
           className={css(styles.form)}
         >
@@ -80,3 +89,5 @@ export default class Login extends Component {
     );
   }
 }
+
+Login.contextType = AppContext;

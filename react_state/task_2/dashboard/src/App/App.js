@@ -2,7 +2,6 @@ import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Login from '../Login/Login';
-import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
@@ -10,6 +9,7 @@ import { getLatestNotification } from '../Utils/utils';
 import { Component } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import 'react';
+import AppContext from './AppContext';
 
 const styles = StyleSheet.create({
   app: {
@@ -25,7 +25,17 @@ const styles = StyleSheet.create({
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { displayDrawer: false };
+    this.logIn = this.logIn.bind(this);
+    this.logOut = this.logOut.bind(this);
+    this.state = {
+      displayDrawer: false,
+      user: {
+        email: '',
+        password: '',
+        isLoggedIn: false,
+      },
+      logOut: () => this.logOut(),
+    };
   }
 
   componentDidMount() {
@@ -44,16 +54,37 @@ class App extends Component {
     this.setState({ displayDrawer: false });
   }
 
+  logIn(email, password) {
+    console.log(email, password);
+    this.setState({
+      user: {
+        ...this.state.user,
+        isLoggedIn: true,
+        email: email,
+        password: password,
+      },
+    });
+  }
+
+  logOut() {
+    this.setState({
+      user: {
+        email: '',
+        password: '',
+        isLoggedIn: false,
+      },
+    });
+  }
+
   keyPress(e) {
     if (e.ctrlKey && e.key === 'h') {
-      this.props.logOut();
+      this.state.logOut();
       alert('Logging you out');
     }
   }
 
   render() {
-    const { isLoggedIn, logOut } = this.props;
-    const { displayDrawer } = this.state;
+    const { displayDrawer, isLoggedIn } = this.state;
     // console.log('HφΣ');
 
     const listCourses = [
@@ -69,7 +100,9 @@ class App extends Component {
     ];
 
     return (
-      <>
+      <AppContext.Provider
+        value={{ user: this.state.user, logOut: this.state.logOut }}
+      >
         <Notifications
           listNotifications={listNotifications}
           displayDrawer={displayDrawer}
@@ -83,7 +116,7 @@ class App extends Component {
           </BodySectionWithMarginBottom>
         ) : (
           <BodySectionWithMarginBottom title={'Log in to continue'}>
-            <Login />
+            <Login logIn={this.logIn} />
           </BodySectionWithMarginBottom>
         )}
         <BodySection title={'News from the School'}>
@@ -95,19 +128,9 @@ class App extends Component {
           </p>
         </BodySection>
         <Footer />
-      </>
+      </AppContext.Provider>
     );
   }
 }
-
-App.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  logOut: PropTypes.func,
-};
-
-App.defaultProps = {
-  isLoggedIn: false,
-  logOut: () => {},
-};
 
 export default App;
