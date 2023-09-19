@@ -51,28 +51,11 @@ const styles = StyleSheet.create({
 export default class Notifications extends Component {
   constructor(props) {
     super(props);
-    this.markAsRead = this.markAsRead.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    // if displayDrawer changed then re-render
-    if (nextProps.displayDrawer !== this.props.displayDrawer) {
-      return true;
-    }
-    // if next list notifications is longer then re-render
-    if (
-      nextProps.listNotifications.length > this.props.listNotifications.length
-    ) {
-      return true;
-    }
-    return false;
-  }
-
-  markAsRead(id) {
-    console.log(`Notification ${id} has been marked as read`);
   }
 
   render() {
+    const { markNotificationAsRead } = this.props;
+
     const {
       displayDrawer,
       listNotifications,
@@ -113,7 +96,7 @@ export default class Notifications extends Component {
                     value={notification.value}
                     key={notification.id}
                     html={notification.html}
-                    markAsRead={() => this.markAsRead(notification.id)}
+                    markAsRead={() => markNotificationAsRead(notification.id)}
                   />
                 ))
               )}
@@ -130,6 +113,7 @@ Notifications.propTypes = {
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
   handleDisplayDrawer: PropTypes.func,
   handleHideDrawer: PropTypes.func,
+  markNotificationAsRead: PropTypes.func,
 };
 
 Notifications.defaultProps = {
@@ -137,4 +121,5 @@ Notifications.defaultProps = {
   listNotifications: [],
   handleDisplayDrawer: () => {},
   handleHideDrawer: () => {},
+  markNotificationAsRead: () => {},
 };

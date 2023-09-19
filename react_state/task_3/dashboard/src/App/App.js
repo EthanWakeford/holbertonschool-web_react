@@ -22,11 +22,18 @@ const styles = StyleSheet.create({
   footer: {},
 });
 
+const listNotifications = [
+  { id: 1, type: 'default', value: 'New course available' },
+  { id: 2, type: 'urgent', value: 'New resume available' },
+  { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
+];
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
+    this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
     this.state = {
       displayDrawer: false,
       user: {
@@ -35,6 +42,7 @@ class App extends Component {
         isLoggedIn: false,
       },
       logOut: () => this.logOut(),
+      listNotifications: listNotifications,
     };
   }
 
@@ -76,6 +84,15 @@ class App extends Component {
     });
   }
 
+  markNotificationAsRead(id) {
+    // removes item from listNotifications that matches ID
+    const copyListNotif = this.state.listNotifications.filter(
+      (notif) => notif.id !== id
+    );
+
+    this.setState({ listNotifications: [...copyListNotif] });
+  }
+
   keyPress(e) {
     if (e.ctrlKey && e.key === 'h') {
       this.state.logOut();
@@ -84,7 +101,7 @@ class App extends Component {
   }
 
   render() {
-    const { displayDrawer, isLoggedIn } = this.state;
+    const { displayDrawer, isLoggedIn, listNotifications } = this.state;
     // console.log('HφΣ');
 
     const listCourses = [
@@ -93,18 +110,13 @@ class App extends Component {
       { id: 3, name: 'React', credit: 40 },
     ];
 
-    const listNotifications = [
-      { id: 1, type: 'default', value: 'New course available' },
-      { id: 2, type: 'urgent', value: 'New resume available' },
-      { id: 3, type: 'urgent', html: { __html: getLatestNotification() } },
-    ];
-
     return (
       <AppContext.Provider
         value={{ user: this.state.user, logOut: this.state.logOut }}
       >
         <Notifications
           listNotifications={listNotifications}
+          markNotificationAsRead={this.markNotificationAsRead}
           displayDrawer={displayDrawer}
           handleDisplayDrawer={this.handleDisplayDrawer.bind(this)}
           handleHideDrawer={this.handleHideDrawer.bind(this)}
