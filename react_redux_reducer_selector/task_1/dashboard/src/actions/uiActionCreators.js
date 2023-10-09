@@ -30,6 +30,4 @@ export function loginFailure() {
   return { type: uiActionTypes.LOGIN_FAILURE };
 }
 
-export function loginRequest(email, password) {
-  return { type: uiActionTypes.LOGIN, user: { email, password } };
-}
+export function loginRequest(email, password) {}
