@@ -2,4 +2,6 @@ const selectCourseAction = 'SELECT_COURSE';
 
 const unselectCourseAction = 'UNSELECT_COURSE';
 
-export { selectCourseAction, unselectCourseAction };
+const FETCH_COURSE_SUCCESS = 'FETCH_COURSE_SUCCESS';
+
+export { selectCourseAction, unselectCourseAction, FETCH_COURSE_SUCCESS };
