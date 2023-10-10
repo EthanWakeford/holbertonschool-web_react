@@ -1,0 +1,8 @@
+.App-footer {
+  position: static;
+  width: 95vw;
+  bottom: 0;
+  border-top: 0.5rem solid;
+  border-color: red;
+  text-align: center;
+}
